@@ -1,0 +1,6 @@
+City, 2010 Population, 2000 Population, { role: 'style' }
+New York City NY, 8175000, 8008000,'#b87333'
+Los Angeles CA, 3792000, 3694000,gold
+Chicago IL, 2695000, 2896000,silver
+Houston TX, 2099000, 1953000,red
+Philadelphia PA, 1526000, 1517000,green

@@ -1,0 +1,160 @@
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/contact');
+var Schema = mongoose.Schema;
+
+var ContactSchema= new Schema({
+    name: { type: String, required: true },
+    phone: { type: Number },
+});
+
+var ContactModel = mongoose.model('Contact', ContactSchema);
+
+----------------------------------------------------
+var express = require("express");
+var contacts = require("./contact");
+var app = express();
+
+app.listen(1222, "127.0.0.1");
+
+
+app.configure(function () {
+  app.use(express.bodyParser());
+});
+app.get("/", contacts.index);
+app.get('/contacts', contacts.index);
+app.get('/contacts/:id', contacts.findById);
+app.post('/contacts', contacts.addContact);
+app.post('/contacts', contacts.addContact);
+app.put('/contacts/:id', contacts.updateContact);
+app.delete('/contacts/:id', contacts.deleteContact);
+
+---------------------------------------------------------------
+
+contact.js
+
+
+exports.index = function (req, res){
+    return ContactModel.find(function (err, contacts) {
+        if (!err) {
+                res.jsonp(contacts);
+        } else {
+                console.log(err);
+        }
+    });
+}
+
+exports.findById = function (req, res) {
+    return ContactModel.findById(req.params.id, function (err, contact) {
+      if (!err) {
+            res.jsonp(contact);
+      } else {
+            console.log(err);
+      }
+    });
+}
+
+
+exports.addContact = function (req, res) {
+    var contact;
+    contact = new ContactModel({
+        name: req.body.name,
+        phone: req.body.phone,
+    });
+    contact.save(function (err) {
+        if (!err) {
+            console.log("created");
+        } else {
+            console.log(err);
+        }
+    });
+
+    return res.send(contact);
+}
+
+
+exports.updateContact = function (req, res) {
+  return ContactModel.findById(req.params.id, function (err, contact) {
+    contact.name = req.body.name;
+    contact.phone = req.body.phone;
+    contact.save(function (err) {
+      if (!err) {
+        console.log("updated");
+      } else {
+        console.log(err);
+      }
+       res.send(contact);
+    });
+  });
+}
+
+exports.deleteContact = function (req, res){
+  return ContactModel.findById(req.params.id, function (err, contact) {
+    return contact.remove(function (err) {
+      if (!err) {
+        console.log("removed");
+        return res.send('');
+      } else {
+        console.log(err);
+      }
+    });
+  });
+}
+
+
+
+app.updateTodo = function (req, res) {
+  //console.log("edit post: " + req.body.type);
+      Todo.findByIdAndUpdate(req.params.id, {
+        $set: { type: req.body.type }}, {upsert:true}, function (err, user) {
+          return res.json(true);
+        }
+      );
+    };
+
+https://gist.github.com/pixelhandler/1791080
+
+
+
+
+// Single update
+app.put('/api/products/:id', function (req, res) {
+  return ProductModel.findById(req.params.id, function (err, product) {
+    product.title = req.body.title;
+    product.description = req.body.description;
+    product.style = req.body.style;
+    product.images = req.body.images;
+    product.categories = req.body.categories;
+    product.catalogs = req.body.catalogs;
+    product.variants = req.body.variants;
+    return product.save(function (err) {
+      if (!err) {
+        console.log("updated");
+      } else {
+        console.log(err);
+      }
+      return res.send(product);
+    });
+  });
+});
+
+
+// Single update
+app.put('/api/todos/:todo_id', function (req, res) {
+  return Todo.findById(req.params.id, function (err, todo) {
+    todo.type = true;
+    return product.save(function (err) {
+      if (!err) {
+        console.log("updated");
+      } else {
+        console.log(err);
+      }
+      return res.send(product);
+    });
+  });
+});
+
+
+var convertedJSON = JSON.parse(JSON.stringify(mongooseReturnedDocument);
+
+userForm.todo.$dirty && userForm.todo.$invalid &&

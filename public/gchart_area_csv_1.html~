@@ -1,0 +1,210 @@
+<html>
+  <head>
+  
+
+		
+		<!-- Website Title & Description for Search Engine purposes -->
+		<title></title>
+		<meta name="description" content="">
+		
+		<!-- Mobile viewport optimized -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
+		<!-- Bootstrap CSS -->
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="includes/css/bootstrap-glyphicons.css" rel="stylesheet">
+		
+		<!-- Custom CSS -->
+		<link href="includes/css/styles.css" rel="stylesheet">
+		
+		<!-- Include Modernizr in the head, before any other Javascript -->
+		<script src="includes/js/modernizr-2.6.2.min.js"></script>
+		
+
+  
+  
+<script src="https://www.google.com/jsapi"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="https://jquery-csv.googlecode.com/files/jquery.csv-0.71.js"></script>
+    <script type="text/javascript">
+   
+    
+
+
+// load the visualization library from Google and set a listener
+//google.load("visualization", "1", {packages:["corechart"]});
+//google.setOnLoadCallback(drawChart);
+
+// this has to be a global function
+/*function drawChart() {
+   // grab the CSV
+   $.get("example.csv", function(csvString) {
+      // transform the CSV string into a 2-dimensional array
+      var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+      // this new DataTable object holds all the data
+      var data = new google.visualization.arrayToDataTable(arrayData);
+
+      // this view can select a subset of the data at a time
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0,1]);
+
+     // set chart options
+     var options = {
+        title: "A Chart from a CSV!",
+        hAxis: {title: data.getColumnLabel(0), minValue: data.getColumnRange(0).min, maxValue: data.getColumnRange(0).max},
+        vAxis: {title: data.getColumnLabel(1), minValue: data.getColumnRange(1).min, maxValue: data.getColumnRange(1).max},
+        legend: 'none'
+     };
+
+     // create the chart object and draw it
+     var chart = new google.visualization.ScatterChart(document.getElementById('chart'));
+     chart.draw(view, options);
+  });
+}    
+    */
+      
+ // load the visualization library from Google and set a listener
+//google.load("visualization", "1", {packages:["corechart"]});
+
+google.load('visualization', '1', {packages: ['corechart', 'bar']});
+google.setOnLoadCallback(drawChart);
+
+// this has to be a global function
+function drawChart() {
+   // grab the CSV
+   $.get("dino.csv", function(csvString) {
+      // transform the CSV string into a 2-dimensional array
+      var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+        var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+      // this new DataTable object holds all the data
+      var data = new google.visualization.arrayToDataTable(arrayData);
+
+      // this view can select a subset of the data at a time
+     // var view = new google.visualization.DataView(data);
+     // view.setColumns([0,1]);
+
+     // set chart options
+    var options = {
+          title: 'Lengths of dinosaurs, in meters',
+          legend: { position: 'top' },
+            'backgroundColor': {
+        'fill': '#F4F4F4',
+        'opacity': 100
+     },
+ 
+        };
+
+
+
+     // create the chart object and draw it
+    // var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
+     
+     var material = new google.charts.Bar(document.getElementById('chart_div'));
+      material.draw(data, options);
+       // chart.draw(data, options);
+    // chart.draw(view, options);
+  });
+    
+}          
+   
+    </script>
+    
+ <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+   // grab the CSV
+   $.get("area.csv", function(csvString) {
+      // transform the CSV string into a 2-dimensional array
+        var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+      // this new DataTable object holds all the data
+      var data = new google.visualization.arrayToDataTable(arrayData);
+
+      // this view can select a subset of the data at a time
+     // var view = new google.visualization.DataView(data);
+     // view.setColumns([0,1]);
+  var options = {
+          title: 'Company Performance',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div1'));
+        chart.draw(data, options);
+      });
+    
+}   
+    </script>    
+    
+  </head>
+  <body>
+  <div class="container" id="main">
+  	<div class="well">
+						<div class="page-header">
+							<h1>A Fancy Header <small>A subheader for extra awesome.</small></h1>
+						</div><!-- end page-header -->
+						
+						<p class="lead">Some solid leading copy will help get your users engaged. Use this area to come up with something real nice. Know what I'm sayin?</p>
+						
+						<a href="" class="btn btn-large btn-primary" id="alertMe">Click a nice big button</a>
+						<a href="" class="btn btn-large btn-link">or a secondary link</a>
+					</div><!-- end well -->
+					
+  			<div class="row" id="featuresNew">
+					<div class="col-lg-6">
+   						 <div id="chart_div"></div>
+    				</div>
+    					<div class="col-lg-6">
+   						 <div id="chart_div1"></div>
+    				</div>
+    					
+    		</div>
+    	
+    	
+   <div class="well">
+						<div class="page-header">
+							<h1>A Fancy Header <small>A subheader for extra awesome.</small></h1>
+						</div><!-- end page-header -->
+						
+						<p class="lead">Some solid leading copy will help get your users engaged. Use this area to come up with something real nice. Know what I'm sayin?</p>
+						
+						<a href="" class="btn btn-large btn-primary" id="alertMe">Click a nice big button</a>
+						<a href="" class="btn btn-large btn-link">or a secondary link</a>
+					</div><!-- end well --> 	
+ 
+ 	<div class="row" id="featuresNew1">
+					<div class="col-lg-6">
+   						 <div id="chart_div3"></div>
+    				</div>
+    					<div class="col-lg-6">
+   						 <div id="chart_div4"></div>
+    				</div>
+    		</div>   	
+    	
+ </div>
+    
+    
+	
+
+	<!-- All Javascript at the bottom of the page for faster page loading -->
+		
+	<!-- First try for the online version of jQuery-->
+	<!--script src="http://code.jquery.com/jquery.js"></script-->
+	
+	<!-- If no online access, fallback to our hardcoded version of jQuery -->
+	<!--script>window.jQuery || document.write('<script src="includes/js/jquery-1.8.2.min.js"><\/script>')</script-->
+	
+	<!-- Bootstrap JS -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- Custom JS -->
+	<script src="includes/js/script.js"></script>    
+    
+  </body>
+</html>
+
+
+

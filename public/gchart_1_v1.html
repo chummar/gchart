@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+    <!-- Website Title & Description for Search Engine purposes -->
+    <title></title>
+    <meta name="description" content="">
+
+    <!-- Mobile viewport optimized -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="includes/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="includes/css/styles.css" rel="stylesheet">
+
+    <!-- Include Modernizr in the head, before any other Javascript -->
+    <script src="includes/js/modernizr-2.6.2.min.js"></script>
+
+
+
+
+    <script src="https://www.google.com/jsapi"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://jquery-csv.googlecode.com/files/jquery.csv-0.71.js"></script>
+
+
+    <script type="text/javascript">
+
+        google.load('visualization', '1', {packages: ['corechart', 'bar']});
+        google.setOnLoadCallback(drawChart);
+
+        // this has to be a global function
+        function drawChart() {
+            // grab the CSV
+            $.get("BOOKINGSVSCONSUMERNEW.csv", function(csvString) {
+                // transform the CSV string into a 2-dimensional array
+                var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+                //var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+                // this new DataTable object holds all the data
+                var data = new google.visualization.arrayToDataTable(arrayData);
+
+                // this view can select a subset of the data at a time
+                // var view = new google.visualization.DataView(data);
+                // view.setColumns([0,1]);
+
+                // set chart options
+                var options = {
+                    title: 'Bookings vs Consumers',
+                    colors: ['#9575cd', '#33ac71'],
+                    legend: { position: 'top' },
+                    'backgroundColor': {
+                        'fill': '#F4F4F4',
+                        'opacity': 100
+                    },
+
+                };
+
+
+                var material = new google.charts.Bar(document.getElementById('chart_div'));
+                material.draw(data, options);
+
+            });
+
+        }
+
+    </script>
+
+    <script type="text/javascript">
+
+        google.load('visualization', '1', {packages: ['corechart', 'bar']});
+        google.setOnLoadCallback(drawChart);
+
+        // this has to be a global function
+        function drawChart() {
+            // grab the CSV
+            $.get("dino.csv", function(csvString) {
+                // transform the CSV string into a 2-dimensional array
+                var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+                var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+                // this new DataTable object holds all the data
+                var data = new google.visualization.arrayToDataTable(arrayData);
+
+                // this view can select a subset of the data at a time
+                // var view = new google.visualization.DataView(data);
+                // view.setColumns([0,1]);
+
+                // set chart options
+                var options = {
+                    title: 'Lengths of dinosaurs, in meters',
+                    colors: ['#9575cd', '#33ac71'],
+                    legend: { position: 'top' },
+                    'backgroundColor': {
+                        'fill': '#F4F4F4',
+                        'opacity': 100
+                    },
+
+                };
+
+
+                var material = new google.charts.Bar(document.getElementById('chart_div1'));
+                material.draw(data, options);
+
+            });
+
+        }
+
+    </script> 
+
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart", "calendar"]});
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+            // grab the CSV
+            $.get("consumercountuiw.csv", function(csvString) {
+                // transform the CSV string into a 2-dimensional array
+                var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+                // this new DataTable object holds all the data
+                var data = new google.visualization.arrayToDataTable(arrayData);
+
+                // this view can select a subset of the data at a time
+                // var view = new google.visualization.DataView(data);
+                // view.setColumns([0,1]);
+                var options = {
+                    title: 'Records with Consumer IDs',
+                    hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+                    vAxis: {minValue: 0}
+                };
+
+                var chart = new google.visualization.AreaChart(document.getElementById('chart_div2'));
+                chart.draw(data, options);
+            });
+
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+            // grab the CSV
+            $.get("consumercountuiw.csv", function(csvString) {
+                // transform the CSV string into a 2-dimensional array
+                var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+                // this new DataTable object holds all the data
+                var data = new google.visualization.arrayToDataTable(arrayData);
+
+                // this view can select a subset of the data at a time
+                // var view = new google.visualization.DataView(data);
+                // view.setColumns([0,1]);
+                var options = {
+                    title: 'Distinct count of consumer Ids in DGXREF',
+                   hAxis: {title: 'Week # of the year',  titleTextStyle: {color: '#333'}},
+                    //vAxis: {minValue: 0}
+				    //vAxis: {title: 'Accumulated Rating'},
+           seriesType: "bars",
+    series: {1: {type: "line"}}
+                };
+
+                var chart = new google.visualization.ComboChart(document.getElementById('chart_div3'));
+                chart.draw(data, options);
+            });
+
+        }
+    </script>
+	
+	 <script type="text/javascript">
+     // google.load("visualization", "1.1", {packages:["calendar"]});
+      google.setOnLoadCallback(drawChart1);
+
+   function drawChart1() {
+      // grab the CSV
+            $.get("caldate.csv", function(csvString) {
+                // transform the CSV string into a 2-dimensional array
+                var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+                // this new DataTable object holds all the data
+                var dataTable = new google.visualization.arrayToDataTable(arrayData);
+				
+				var view = new google.visualization.DataView(dataTable);
+// create a formatter to format the dates
+var dateFormatter = new google.visualization.DateFormat({pattern: 'dd-MM-yy'});
+view.setColumns([{
+    type: 'date',
+    label: 'Date',
+    calc: function (dataTable, row) {
+        var dateMatch = dataTable.getValue(row, 0).match(/(\d{2})-(\d{2})-(\d{2})/);
+       // var timeMatch = dataTable.getValue(row, 1).match(/(\d{2}):(\d{2}):(\d{2})/);
+        var year = 20 + dateMatch[3];
+        var month = parseInt(dateMatch[2], 10) - 1; // subtract 1 to convert to javascript's zero-indexed months
+        var day = parseInt(dateMatch[1], 10);
+        //var hours = parseInt(timeMatch[1], 10);
+       // var minutes = parseInt(timeMatch[2], 10);
+        //var seconds = parseInt(timeMatch[3], 10);
+       // var dateTime = new Date(year, month, day, hours, minutes, seconds);
+		var date = new Date(year, month, day);
+        return {v: date, f: dateFormatter.formatValue(date)};
+    }
+}, 1 /* ... rest of columns if necessary */]);
+				
+				
+				
+      
+       var chart1 = new google.visualization.Calendar(document.getElementById('calendar_div1'));
+
+       var options = {
+         title: "Records processed by day",
+         height: 175,
+       };
+
+       chart1.draw(view, options);
+   });
+   }
+    </script>
+	
+	    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["timeline"]});
+      google.setOnLoadCallback(drawChart);
+
+
+        function drawChart() {
+      // grab the CSV
+            $.get("timeline.csv", function(csvString) {
+                // transform the CSV string into a 2-dimensional array
+                var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+                // this new DataTable object holds all the data
+                var dataTable = new google.visualization.arrayToDataTable(arrayData);
+				
+				var view = new google.visualization.DataView(dataTable);
+// create a formatter to format the dates
+var dateFormatter = new google.visualization.DateFormat({pattern: 'HH-MM-SS'});
+view.setColumns([
+0,1,
+{
+    type: 'date',
+    label: 'Date',
+    calc: function (dataTable, row) {
+		var yearTo = 0;
+		var monthTo = 0;
+		var dayTo = 0;
+        var timeMatchTo = dataTable.getValue(row, 2).match(/(\d{2}):(\d{2}):(\d{2})/);
+        var hoursTo = parseInt(timeMatchTo[1], 10);
+        var minutesTo = parseInt(timeMatchTo[2], 10);
+        var secondsTo = parseInt(timeMatchTo[3], 10);
+		var dateTimeTo = new Date(yearTo, monthTo, dayTo, hoursTo, minutesTo, secondsTo); 
+        return {v: dateTimeTo, f: dateFormatter.formatValue(dateTimeTo)};
+    }
+}, 
+{
+    type: 'date',
+    label: 'Date',
+    calc: function (dataTable, row) {
+      var year = 0;
+		var month = 0;
+		var day = 0;
+        var timeMatch = dataTable.getValue(row, 3).match(/(\d{2}):(\d{2}):(\d{2})/);
+        var hours = parseInt(timeMatch[1], 10);
+        var minutes = parseInt(timeMatch[2], 10);
+        var seconds = parseInt(timeMatch[3], 10);
+		var dateTime = new Date(year, month, day, hours, minutes, seconds); 
+        return {v: dateTime, f: dateFormatter.formatValue(dateTime)};
+    }
+} 
+ /* ... rest of columns if necessary */]);
+ 
+   var chart10 = new google.visualization.Timeline(document.getElementById('timeline'));
+
+       var options = {
+         title: "Records processed by day",
+         height: 600,
+       };
+
+       chart10.draw(view, options);
+ 
+ });
+      }
+    </script>
+	
+	
+
+</head>
+<body>
+
+
+<div class="container" id="main">
+
+    <div class="navbar navbar-fixed-top">
+        <div class="container">
+
+
+            <a class="navbar-brand" href="/"><img src="images/logo.png" alt="Your Logo"></a>
+
+            <div class="nav navbar-nav">
+
+                <a href="" class="btn btn-large btn-primary" id="Home">Home</a>
+                        <a href="" class="btn btn-large btn-primary" id="CMA">CMA</a>
+                        <a href="" class="btn btn-large btn-primary" id="UIW">UIW</a>
+
+            </div><!-- end nav-collapse -->
+
+        </div><!-- end container -->
+    </div><!-- end navbar -->
+
+
+    <div class="carousel slide" id="myCarousel">
+
+    </div><!-- end myCarousel -->
+
+
+    <div class="row" id="bigCallout">
+        <div class="col-12">
+
+            <div class="alert alert-success alert-block fade in" id="successAlert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+                <h4>Success!</h4>
+                <p>You just made this element display by using jQuery. Click the "x" in the top right corner to close this bad boy.</p>
+            </div><!-- end alert -->
+
+            <!-- Visible only on small devices -->
+            <!--div class="well well-small visible-sm">
+                <a href="" class="btn btn-large btn-block btn-default"><span class="glyphicon glyphicon-phone"></span> Give us a call!</a>
+            </div--><!-- end well-small -->
+
+            <div class="well">
+                <div class="page-header">
+                    <h3>Data Warehouse Metrics Dashboard <small>Tracking key metrics</small></h3>
+                </div><!-- end page-header -->
+
+                <p class="lead">Data Quality Charts</p>
+
+                <!--a href="" class="btn btn-large btn-primary" id="alertMe">Click a nice big button</a>
+                <a href="" class="btn btn-large btn-link">or a secondary link</a-->
+            </div><!-- end well -->
+
+        </div><!-- end col-12 -->
+    </div><!-- end bigCallout -->
+
+
+    <div class="row" id="featuresHeading">
+        <div class="col-12">
+            <h4>Why measure ?</h4>
+            <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div><!-- end col-12 -->
+    </div><!-- end featuresHeading -->
+
+
+    <div class="row" id="features">
+        <div class="col-sm-6 feature">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Count of distinct consumer IDs by Month from Bookings</h3>
+                </div><!-- end panel-heading -->
+                <div id="chart_div">
+
+
+                </div>
+
+            </div><!-- end panel -->
+        </div><!-- end feature -->
+
+        <div class="col-sm-6 feature">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Count of Sailings by Ship</h3>
+                </div><!-- end panel-heading -->
+                <div id="chart_div1">
+
+
+                </div>
+
+            </div><!-- end panel -->
+        </div><!-- end feature -->
+
+
+    </div><!-- end features -->
+
+    <div class="row" id="features1">
+        <div class="col-sm-6 feature">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Count of Sailings by Ship</h3>
+                </div><!-- end panel-heading -->
+                <div id="chart_div2">
+
+
+                </div>
+
+            </div><!-- end panel -->
+        </div><!-- end feature -->
+
+        <div class="col-sm-6 feature">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Distinct count of consumer Ids in DGXREF</h3>
+                </div><!-- end panel-heading -->
+                <div id="chart_div3">
+
+
+                </div>
+
+            </div><!-- end panel -->
+        </div><!-- end feature -->
+
+
+    </div><!-- end features -->
+
+	
+	
+		 <div class="row" id="features3">
+        <div class="col-lg-12 feature">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Records Processed by day</h3>
+                </div><!-- end panel-heading -->
+                <div id="calendar_div1">
+
+
+                </div>
+
+            </div><!-- end panel -->
+        </div><!-- end feature -->
+
+    </div><!-- end features -->
+	
+			 <div class="row" id="features4">
+        <div class="col-lg-12 feature">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Jobs timeline</h3>
+                </div><!-- end panel-heading -->
+                <div id="timeline">
+
+
+                </div>
+
+            </div><!-- end panel -->
+        </div><!-- end feature -->
+
+    </div><!-- end features -->
+
+
+    <div class="row" id="moreInfo">
+
+    </div><!-- end row -->
+
+
+    <div class="row" id="moreCourses">
+
+    </div><!-- end row -->
+
+</div><!-- end container -->
+
+
+<footer>
+
+</footer>
+
+
+
+
+
+
+
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Custom JS -->
+<script src="includes/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+    <!-- Website Title & Description for Search Engine purposes -->
+    <title></title>
+    <meta name="description" content="">
+
+    <!-- Mobile viewport optimized -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="includes/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="includes/css/styles.css" rel="stylesheet">
+
+    <!-- Include Modernizr in the head, before any other Javascript -->
+    <script src="includes/js/modernizr-2.6.2.min.js"></script>
+
+
+
+
+    <script src="https://www.google.com/jsapi"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://jquery-csv.googlecode.com/files/jquery.csv-0.71.js"></script>
+      <script src="js/gchart.js"></script>
+
+
+    <script type="text/javascript">
+     div_1_chart();
+     div_2_chart();
+     div_3_chart();
+	  div_4_chart();
+	  calendar_div_1();
+	  calendar_div_2();
+	  timelines();
+    </script>
+
+
+<style>
+
+.panel-heading {
+    background-color: #428bca;
+    color : #ffffff;
+}
+.navbar-fixed-top {
+    background-color: #d8d8d8;
+    color : #ffffff;
+}
+
+</style>
+</head>
+<body>
+
+
+<div class="container" id="main">
+  
+
+    <div class="navbar navbar-fixed-top">
+        <a class="navbar-brand" href="/gchart_1.html"><img src="images/rccl_sm.png" alt="Your Logo" width="50" height="50"></a>
+             <a class="navbar-brand" href="/gchart_1.html"><img src="images/edw.png" alt="Your Logo" width="50" height="50"></a>
+             <div id="time"></div>
+             
+        <div class="container">
+
+      
+
+            <div class="nav navbar-nav">
+					
+                <a href="" class="btn btn-large btn-primary" id="Home">Home</a>
+               
+                        <a href="" class="btn btn-large btn-primary" id="CMA">CMA</a>
+                        <a href="" class="btn btn-large btn-primary" id="UIW">UIW</a>
+
+            </div><!-- end nav-collapse -->
+
+        </div><!-- end container -->
+    </div><!-- end navbar -->
+
+
+    <div class="carousel slide" id="myCarousel">
+
+    </div><!-- end myCarousel -->
+
+
+    <div class="row" id="bigCallout">
+        <div class="col-12">
+
+            <div class="alert alert-success alert-block fade in" id="successAlert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+                <h4>Success!</h4>
+                <p>You just made this element display by using jQuery. Click the "x" in the top right corner to close this bad boy.</p>
+            </div><!-- end alert -->
+
+            <!-- Visible only on small devices -->
+            <!--div class="well well-small visible-sm">
+                <a href="" class="btn btn-large btn-block btn-default"><span class="glyphicon glyphicon-phone"></span> Give us a call!</a>
+            </div--><!-- end well-small -->
+
+            <div class="well">
+                <div class="page-header">
+                    <h3>CMA QC Backlog <!--small>Tracking key metrics</small--></h3>
+                </div><!-- end page-header -->
+
+                <!--p class="lead">Data Quality Charts</p-->
+
+                <!--a href="" class="btn btn-large btn-primary" id="alertMe">Click a nice big button</a>
+                <a href="" class="btn btn-large btn-link">or a secondary link</a-->
+            </div><!-- end well -->
+
+        </div><!-- end col-12 -->
+    </div><!-- end bigCallout -->
+
+
+    <!--div class="row" id="featuresHeading">
+        <div class="col-12">
+            <h4>Why measure ?</h4>
+            <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div><!-- end col-12 -->
+    </div--><!-- end featuresHeading -->
+
+
+    <div class="row" id="features">
+    
+
+      
+
+
+    </div><!-- end features -->
+
+    <div class="row" id="features1">
+     
+
+      
+
+
+    </div><!-- end features -->
+
+	
+	
+		 <div class="row" id="features3">
+     
+
+    </div><!-- end features -->
+	
+			 <div class="row" id="features4">
+        <div class="col-lg-12 feature">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Jobs timeline</h3>
+                </div><!-- end panel-heading -->
+                <div id="timeline">
+
+
+                </div>
+
+            </div><!-- end panel -->
+        </div><!-- end feature -->
+
+    </div><!-- end features -->
+
+
+    <div class="row" id="moreInfo">
+
+    </div><!-- end row -->
+
+
+    <div class="row" id="moreCourses">
+
+    </div><!-- end row -->
+
+</div><!-- end container -->
+
+
+<footer>
+
+<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+					<h6>Copyright &copy; Royal Caribbean Cruise Lines</h6>
+					</div><!-- end col-sm-2 -->
+					
+					<div class="col-sm-4">
+						<h6>About Us</h6>
+						<p>2015 Enterprise Data Warehouse </p>
+					</div><!-- end col-sm-4 -->
+					
+					<div class="col-sm-2">
+						<h6>Navigation</h6>
+						<ul class="unstyled">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Services</a></li>
+							<li><a href="#">Links</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</div><!-- end col-sm-2 -->
+				
+					<div class="col-sm-2">
+						<h6>Follow Us</h6>
+						<ul class="unstyled">
+							<li><span class="glyphicon glyphicon-envelope"></span><a href="#"> Email</a></li>
+							<!--li><a href="#">Facebook</a></li>
+							<li><a href="#">Google Plus</a></li-->
+						</ul>
+					</div><!-- end col-sm-2 -->
+					
+					<div class="col-sm-2">
+						<h6>Save the tree <span class="glyphicon glyphicon-leaf"></span> Use the projector</h6>
+					</div><!-- end col-sm-2 -->
+				</div><!-- end row -->
+			</div><!-- end container -->
+
+
+</footer>
+
+
+
+
+
+
+
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Custom JS -->
+<script src="includes/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["timeline"]});
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+
+        dataTable.addColumn({ type: 'string', id: 'Product' });
+		dataTable.addColumn({ type: 'string', id: 'Date' });
+		//dataTable.addColumn({ type: 'string', id: 'count' });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+        dataTable.addRows([
+          [ '2015-05-06','EDSS', new Date(0,0,0,12,0,0),  new Date(0,0,0,14,0,0) ],
+          [ '2015-05-06','E2000', new Date(0,0,0,12,0,0),  new Date(0,0,0,17,0,0) ],
+          [ '2015-05-06','FPR',  new Date(0,0,0,14,0,0),  new Date(0,0,0,15,0,0) ],
+		    [ '2015-05-07','EDSS', new Date(0,0,0,12,0,0),  new Date(0,0,0,18,0,0) ],
+          [ '2015-05-07','E2000', new Date(0,0,0,15,0,0),  new Date(0,0,0,18,0,0) ],
+          [ '2015-05-07','FPR',  new Date(0,0,0,14,0,0),  new Date(0,0,0,15,0,0) ],
+		   [ '2015-05-08','EDSS', new Date(0,0,0,12,0,0),  new Date(0,0,0,14,0,0) ],
+          [ '2015-05-08','E2000',  new Date(0,0,0,16,0,0),  new Date(0,0,0,18,0,0) ],
+          [ '2015-05-08','FPR',  new Date(0,0,0,12,0,0),  new Date(0,0,0,14,0,0) ],
+		    [ '2015-05-09','EDSS', new Date(0,0,0,12,0,0),  new Date(0,0,0,14,0,0) ],
+          [ '2015-05-09','E2000', new Date(0,0,0,12,0,0),  new Date(0,0,0,17,0,0) ],
+          [ '2015-05-09','FPR',  new Date(0,0,0,14,0,0),  new Date(0,0,0,15,0,0) ],
+		    [ '2015-05-10','EDSS', new Date(0,0,0,12,0,0),  new Date(0,0,0,18,0,0) ],
+          [ '2015-05-10','E2000', new Date(0,0,0,15,0,0),  new Date(0,0,0,18,0,0) ],
+          [ '2015-05-10','FPR',  new Date(0,0,0,14,0,0),  new Date(0,0,0,15,0,0) ],
+		   [ '2015-05-11','EDSS', new Date(0,0,0,12,0,0),  new Date(0,0,0,14,0,0) ],
+          [ '2015-05-11','E2000',  new Date(0,0,0,16,0,0),  new Date(0,0,0,18,0,0) ],
+          [ '2015-05-11','FPR',  new Date(0,0,0,12,0,0),  new Date(0,0,0,14,0,0) ]
+		  
+		  ]);
+
+        chart.draw(dataTable);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="timeline" style="width: 900px; height: 680px;"></div>
+  </body>
+</html>

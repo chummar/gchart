@@ -1,0 +1,154 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchTodo">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Node/Angular Todo App</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:10px; }
+		.goal {
+
+			background-color: #7fcdbb;
+		}
+		.task {
+			background-color: #addd8e;
+		}
+
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<script src="core.js"></script>
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
+<body ng-controller="mainController">
+	<div class="container">
+
+		<!-- HEADER AND TODO COUNT -->
+		<div class="jumbotron text-center">
+			<h1><span class="label label-info">{{ filteredTodos.length }}</span> Golgappas need your attention</h1>
+
+		</div>
+		<div>
+			<input type="checkbox" ng-model="formData1.completed"> Completed
+		</div>
+
+		<!-- TODO LIST -->
+		<div id="todo-list" class="row">
+			<div class="col-sm-12 feature">
+			<div class="col-lg-9 col-lg-offset-2">
+
+				<!-- LOOP OVER THE TODOS IN $scope.todos -->
+				<div class="checkbox" ng-repeat="todo in filteredTodos = (todos | filter:formData1.completed | orderBy:'-dtm')">
+
+
+					<div ng-switch on="todo.done">
+
+					<div ng-switch-when="false">
+					<label class="text-right">
+
+						<input type="checkbox" style="opacity:0;" ng-click="updateTodo(todo._id)" ng-model="formData1.done"> <span class="lead">{{ todo.text }} [{{todo.dtm}}] </span > <span input-lg ng-class="{goal: todo.type === 'Goal', task: todo.type === 'Task'}">{{todo.type}}</span>
+					</label>
+					</div>
+						<div ng-switch-when="true">
+							<label class="text-right">
+
+								<input type="checkbox" style="opacity:0;" ng-click="updateTodo(todo._id)" ng-model="formData1.done"> <span class="lead"><strike>{{ todo.text }} [{{todo.dtm}}]  </strike></span> <span ng-class="{goal: todo.type === 'Goal', task: todo.type === 'Task'}">{{todo.type}}</span>
+							</label>
+						</div>
+					</div>
+
+					</div>
+				</div>
+
+			</div>
+			</div>
+
+
+
+
+		<!-- FORM TO CREATE TODOS -->
+		<!--div id="todo-form" class="form-inline">
+
+				<span class="col-sm-20  text-center" style="color:red" ng-show="userForm.todo.$error.required">
+      					Golgappa cannot be empty. Make one before you can eat it !!!.
+  				</span>
+		</div-->
+
+		<div class="alert alert-danger alert-block fade in" id="successAlert" ng-show="userForm.todo.$error.required">
+			<button type="button" class="close" data-dismiss="alert" >&times;</button>
+
+			<h4>Golgappa cannot be empty !!</h4>
+			<p>Make one before you can eat it.</p>
+		</div><!-- end alert -->
+
+
+
+
+		<form  class="form-inline"name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+							<div class="form-group  col-xs-6">
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input name ="todo" type="text" size="40" class="form-control input-lg pull-left"  placeholder="I want to eat Golgappas all day" ng-model="formData.text" ng-minlength="3" required>
+			<!--input type="date" class="form-control input-lg text-center" data-date-format="mm/dd/yyyy" ng-model="formData.date"-->
+
+							</div>
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+							<div class="form-group col-xs-3">
+						
+								<input type="date" class="form-control input-lg text-left" data-date-format="mm/dd/yyyy" ng-model="formData.date">
+
+							</div>
+							<div class="form-group col-xs-2">
+						<!--p>selected item is : {{formData.type}}</p-->
+								<select ng-model="formData.type" class="form-control input-lg text-left">
+								<option  ng-repeat="item in items" value="{{item}}">{{item}}</option>
+								</select>
+								</div>
+
+							<div class="form-group col-xs-1">
+					<!-- createToDo() WILL CREATE NEW TODOS -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()" ng-disabled="userForm.$invalid ">Add</button>
+							</div>
+
+						</form>
+
+</div>
+
+		<!--div class="text-center text-muted">
+			<p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
+			<p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p>
+			< BIND THIS VALUE TO formData.text IN ANGULAR >
+						<input type="text" class="form-control input-lg text-left" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
+		</div-->
+
+	<!-- All Javascript at the bottom of the page for faster page loading -->
+
+	<!-- First try for the online version of jQuery-->
+	<script src="http://code.jquery.com/jquery.js"></script>
+
+	<!-- If no online access, fallback to our hardcoded version of jQuery -->
+	<script>window.jQuery || document.write('<script src="includes/js/jquery-1.8.2.min.js"><\/script>')</script>
+
+	<!-- Bootstrap JS -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Custom JS -->
+	<script src="includes/js/script.js"></script>
+
+
+
+</body>
+</html>

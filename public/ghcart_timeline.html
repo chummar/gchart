@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["timeline"]});
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+
+        dataTable.addColumn({ type: 'string', id: 'President' });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+        dataTable.addRows([
+          [ 'EDSS', new Date(2015, 5, 6,0, 31, 0), new Date(2015, 5, 6,02, 31, 0) ],
+          [ 'E2000',      new Date(2015, 5, 6,9, 31, 0),  new Date(2015, 5, 6,10, 31, 0) ],
+          [ 'FPR',  new Date(2015, 5, 6,0, 31, 0),  new Date(2015, 5, 6,0, 31, 0) ]]);
+
+        chart.draw(dataTable);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="timeline" style="width: 900px; height: 180px;"></div>
+  </body>
+</html>
